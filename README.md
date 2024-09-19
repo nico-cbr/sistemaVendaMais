@@ -2,4 +2,4 @@
 Construção de um sistema de gerenciamento de venda.
 
 # Diagrama
-![Diagrama ER de banco de dados (2)](https://github.com/user-attachments/assets/016ce139-615c-49f3-bb3c-76693eb8b904)
+<img src="https://github.com/user-attachments/assets/d2cb70bc-aa6a-48c8-8d30-ef48170e13bf" width="750px">
