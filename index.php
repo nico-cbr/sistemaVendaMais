@@ -18,18 +18,16 @@
 
   <div class="painel p-5">
     <h3>Login</h3>
-    <form>
+    <form action="acesso.php" method="post">
       <div class="form-group mt-3">
         <label>CPF</label>
-        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Digite seu CPF">
+        <input name="cpf" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Digite seu CPF">
       </div>
       <div class="form-group mt-1">
         <label>Senha</label>
-        <input type="password" class="form-control" placeholder="Digite sua senha">
+        <input name="senha" type="password" class="form-control" placeholder="Digite sua senha">
       </div>
-      <button type="submit" class="btn btn-secondary mt-3">
-        <a href="./principal.php">Entrar</a>
-      </button>
+      <button type="submit" class="btn btn-secondary mt-3">Entrar</button>
       <button type="reset" class="btn btn-danger mt-3">Limpar</button>
     </form>
   </div>
