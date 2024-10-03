@@ -18,8 +18,19 @@
   $colunas = mysqli_fetch_assoc($resultado);
 
   if (mysqli_num_rows($resultado) > 0) {
-    echo "Login efetuado com sucesso";
+    // echo "Login efetuado com sucesso";
+    // inicia sessão
+    session_start();
+    $_SESSION["usuario"] = $colunas["nome"];
+    $_SESSION['cpf'] = $cpf;
+    $_SESSION['senha'] = $senha;
+
+    // direcionar para pagina principal
+    header('location: principal.php');
   }else{
-    echo "Login não efetuado";
+    // echo "Login não efetuado";
+    session_unset();
+    session_destroy();
+    header('location: index.php');
   }
 ?>

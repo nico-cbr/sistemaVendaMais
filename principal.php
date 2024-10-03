@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -44,7 +45,8 @@
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <a class="btn btn-outline-secondary"><i class="bi bi-search"></i></a>
+          <a class="btn btn-outline-danger ms-2" href="./sair.php"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
         </form>
       </div>
     </div>
@@ -58,7 +60,7 @@
         <div class="d-flex flex-column flex-shrink-0 p-2 text-white " style="width: 280px;">
           <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
             <svg class="bi me-1" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-            <span class="fs-4">Sidebar</span>
+            <span class="fs-5">Bem-vindo(a) <?php echo $_SESSION['usuario'] ?></span>
           </a>
           <hr class="">
           <ul class="nav nav-pills flex-column mb-auto">
@@ -104,14 +106,14 @@
           <div class="dropdown fixed-bottom mb-3 ms-3">
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
               <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-              <strong>mdo</strong>
+              <strong><?php echo $_SESSION['usuario'] ?></strong>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
               <li><a class="dropdown-item" href="#">New project...</a></li>
               <li><a class="dropdown-item" href="#">Settings</a></li>
               <li><a class="dropdown-item" href="#">Profile</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Sign out</a></li>
+              <li><a class="dropdown-item btn btn-outline-danger" href="./sair.php"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sair</a></li>
             </ul>
           </div>
         </div>
