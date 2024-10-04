@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php include "validacao.php" ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -122,16 +122,20 @@
         <div class="row">
           <div class="col-md card p-3">
             <h3>Cadastro</h3>
-            <form>
+            <form action="./usuario/inserir.php" method="post">
+            <div class="form-group">
+                <label>Nome</label>
+                <input name="nome" type="text" class="form-control" placeholder="Digite seu nome.">
+              </div>
               <div class="form-group">
                 <label>CPF</label>
-                <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="Digite seu CPF.">
+                <input name="cpf" type="text" class="form-control" placeholder="Digite seu CPF.">
               </div>
               <div class="form-group mt-1">
                 <label>Senha</label>
-                <input type="password" class="form-control" placeholder="Digite sua senha.">
+                <input name="senha" type="password" class="form-control" placeholder="Digite sua senha.">
               </div>
-              <button type="submit" class="btn btn-secondary mt-3">Salvar</button>
+              <button type="submit" class="btn btn-secondary mt-3">Cadastrar</button>
               <button type="reset" class="btn btn-danger mt-3">Limpar</button>
             </form>
           </div>
