@@ -1,4 +1,6 @@
-<?php include "validacao.php" ?>
+<?php include "validacao.php";
+  include "conexao.php";
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -151,24 +153,25 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
-                </tr>
+              <?php
+                              //SQL para selecionar todos os usuários
+                              $sql = "SELECT * FROM usuario";
+                              $resultado = mysqli_query($conexao, $sql);
+                              //looping onde $coluna, vai representar os dados do banco
+                              //a cada linha é uma registro diferente
+                              while($coluna = mysqli_fetch_assoc( $resultado)){  ?>
+                              <tr>
+                                <th> <?php echo $coluna['id'] ?> </th>
+                                <td> <?php echo $coluna['nome'] ?> </td>
+                                <td> <?php echo $coluna['cpf'] ?> </td>
+                                <td> 
+                                  <a href=""> <i class="fa-solid fa-pen-to-square mr-3" style="color: green;"></i></a>
+                                  <a href="<?php echo './usuario/excluir.php?id='.$coluna['id'] ?>">
+                                    <i class="fa-solid fa-trash-can" style="color: red;"></i>
+                                  </a>
+                                </td>
+                              </tr>
+ <?php } ?>
               </tbody>
             </table>
           </div>
