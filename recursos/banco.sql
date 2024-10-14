@@ -86,4 +86,8 @@ quantidade int,
 valor decimal(10,2),
 venda_id int REFERENCES venda(id),
 produto_id int REFERENCES venda(id)
-)
+);
+
+insert into item_venda(quantidade, valor, venda_id, produto_id) VALUES
+(2,140,1,1),
+(2,140,1,2);
