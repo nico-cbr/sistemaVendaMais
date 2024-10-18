@@ -1,5 +1,22 @@
 <?php include "validacao.php";
   include "conexao.php";
+
+  // destino do formulário para inserir por padrao
+  $destino = './usuario/inserir.php';
+
+  // se idAlt for diferente de vazio - se existir idAlt
+  if(!empty($_GET['idAlt'])){
+    // guarda na variavel $id o valor da pessoa clicado no lápis da tabela
+    $id = $_GET['idAlt'];
+// busca o usuario do idaAlt
+   $sql = "SELECT * FROM usuario WHERE id='$id'";
+  //  executa o comando
+   $dados = mysqli_query($conexao,$sql);
+  //  variavel com nosso dados
+  $dadosAlt = mysqli_fetch_assoc($dados);
+
+  $destino = './usuario/alterar.php';
+  }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -23,7 +40,7 @@
   <!-- Barra de navegação -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Venda+</a>
+      <a class="navbar-brand" href="#"><i class="fa-brands fa-cloudscale"></i> Venda+</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -124,18 +141,22 @@
         <div class="row">
           <div class="col-md card p-3">
             <h3>Cadastro</h3>
-            <form action="./usuario/inserir.php" method="post">
-            <div class="form-group">
-                <label>Nome</label>
-                <input name="nome" type="text" class="form-control" placeholder="Digite seu nome.">
-              </div>
+            <form action="<?=$destino?>" method="post">
               <div class="form-group">
-                <label>CPF</label>
-                <input name="cpf" type="text" class="form-control" placeholder="Digite seu CPF.">
+                  <label>ID</label>
+                  <input name="nome" value="<?php echo isset($dadosAlt) ? $dadosAlt['id'] : '' ?>" type="text" class="form-control" placeholder="Seu id" readonly>
+                </div>
+              <div class="form-group">
+                  <label>Nome</label>
+                  <input name="nome" value="<?php echo isset($dadosAlt) ? $dadosAlt['nome'] : '' ?>" type="text" class="form-control" placeholder="Digite seu nome." required>
+                </div>
+              <div class="form-group">
+                <label class="painel-label-texto">CPF</label>
+                <input name="cpf" value="<?php echo isset($dadosAlt) ? $dadosAlt['cpf'] : '' ?>" type="text" class="form-control cpf" placeholder="Digite seu CPF." required>
               </div>
               <div class="form-group mt-1">
                 <label>Senha</label>
-                <input name="senha" type="password" class="form-control" placeholder="Digite sua senha.">
+                <input name="senha" value="<?php echo isset($dadosAlt) ? $dadosAlt['senha'] : '' ?>" type="password" class="form-control" placeholder="Digite sua senha." required>
               </div>
               <button type="submit" class="btn btn-secondary mt-3">Cadastrar</button>
               <button type="reset" class="btn btn-danger mt-3">Limpar</button>
@@ -147,9 +168,9 @@
               <thead>
                 <tr>
                   <th scope="col">ID</th>
-                  <th scope="col">Primeiro nome</th>
-                  <th scope="col">Ultimo nome</th>
-                  <th scope="col">nickname</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">CPF</th>
+                  <th scope="col">Opções</th>
                 </tr>
               </thead>
               <tbody>
@@ -165,7 +186,7 @@
                                 <td> <?php echo $coluna['nome'] ?> </td>
                                 <td> <?php echo $coluna['cpf'] ?> </td>
                                 <td> 
-                                  <a href=""> <i class="fa-solid fa-pen-to-square mr-3" style="color: green;"></i></a>
+                                  <a href="principal.php?idAlt=<?= $coluna['id'] ?>"> <i class="fa-solid fa-pen-to-square mr-3" style="color: green;"></i></a>
                                   <a href="<?php echo './usuario/excluir.php?id='.$coluna['id'] ?>">
                                     <i class="fa-solid fa-trash-can" style="color: red;"></i>
                                   </a>
@@ -181,11 +202,15 @@
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdn.datatables.net/2.1.5/js/dataTables.js"></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js" integrity="sha512-pHVGpX7F/27yZ0ISY+VVjyULApbDlD0/X0rgGbTqCE7WFW5MezNTWG/dnhtbBuICzsd0WQPgpE4REBLv+UqChw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="./recursos/script.js"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
   crossorigin="anonymous"></script>
-  <script src="https://cdn.datatables.net/2.1.5/js/dataTables.js"></script>
-  <script src="./recursos/script.js"></script>
 </body>
 
 </html>
