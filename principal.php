@@ -144,7 +144,7 @@
             <form action="<?=$destino?>" method="post">
               <div class="form-group">
                   <label>ID</label>
-                  <input name="nome" value="<?php echo isset($dadosAlt) ? $dadosAlt['id'] : '' ?>" type="text" class="form-control" placeholder="Seu id" readonly>
+                  <input name="id" value="<?php echo isset($dadosAlt) ? $dadosAlt['id'] : '' ?>" type="text" class="form-control" placeholder="Seu id" readonly>
                 </div>
               <div class="form-group">
                   <label>Nome</label>
