@@ -12,10 +12,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-  <div class="container">
+  <div class="container p-5">
     <h3>Tela de venda</h3>
 
-    <div class="row border">
+    <div class="row">
       <div class="col-md-8">
         <form action="" method="POST">
 
@@ -30,37 +30,113 @@
               </select>
             </div>
 
-            <div class="form-group col-md">
+            <div class="form-group col">
               <label for="">Quantidade</label>
               <input type="number" required class="form-control">
             </div>
-              <div class="col-md">
+              <div class="col">
                 <button type="submit" class="btn btn-success" style="margin-top: 32px;"><i class="fa-solid fa-plus"></i></button>
               </div>
 
-              <table class="table mt-4">
+              <table class="table mt-4 table-striped table-hover table-bordered table-sm table-responsive-xl">
                 <thead>
-                  <th>Produto</th>
-                  <th>Quantidade</th>
-                  <th>Valor Unitário</th>
-                  <th>Valor Total</th>
-                  <th>Opções</th>
+                  <th class="col-6">Produto</th>
+                  <th class="col-1">Quantidade</th>
+                  <th class="col-2">Valor</th>
+                  <th class="col-2">Total</th>
+                  <th class="col-1">Opções</th>
                   <tbody>
                     <tr>
                       <td>Mouse</td>
                       <td>2</td>
                       <td>20.00</td>
                       <td>40</td>
-                      <td>Excluir</td>
+                      <td><a href=""><i class="fa-solid fa-circle-minus" style="color: red;"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>Mouse</td>
+                      <td>2</td>
+                      <td>20.00</td>
+                      <td>40</td>
+                      <td><a href=""><i class="fa-solid fa-circle-minus" style="color: red;"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>Mouse</td>
+                      <td>2</td>
+                      <td>20.00</td>
+                      <td>40</td>
+                      <td><a href=""><i class="fa-solid fa-circle-minus" style="color: red;"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>Mouse</td>
+                      <td>2</td>
+                      <td>20.00</td>
+                      <td>40</td>
+                      <td><a href=""><i class="fa-solid fa-circle-minus" style="color: red;"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>Mouse</td>
+                      <td>2</td>
+                      <td>20.00</td>
+                      <td>40</td>
+                      <td><a href=""><i class="fa-solid fa-circle-minus" style="color: red;"></i></a></td>
+                    </tr>
+                    <tr>
+                      <td>Mouse</td>
+                      <td>2</td>
+                      <td>20.00</td>
+                      <td>40</td>
+                      <td><a href=""><i class="fa-solid fa-circle-minus" style="color: red;"></i></a></td>
                     </tr>
                   </tbody>
                 </thead>
               </table>
-              
+
           </div>
         </form>
       </div>
-      <div class="col-md-4">Informações gerais</div>
+
+      <div class="col-md-4">
+        <h3>Resumo da venda</h3>
+
+        <form action="" method="post">
+          <div class="form-group">
+            <label>Cliente</label>
+            <select class="form-control">
+              <option>João</option>
+              <option>Aline</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Funcionário</label>
+            <select class="form-control">
+              <option>Adalberto</option>
+              <option>Amanda</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Quantidade total</label>
+            <input type="text" class="form-control" value="2" readonly>
+          </div>
+
+          <div class="form-group">
+            <label>Valor total</label>
+            <input type="text" class="form-control" value="R$40.00" readonly>
+          </div>
+
+          <div class="form-group">
+            <label for="">Observação</label>
+            <textarea class="form-control" placeholder="Digite aqui"></textarea>
+          </div>
+
+          <a href="" class="btn btn-outline-success">Finalizar</a>
+          <a href="" class="btn btn-outline-danger">Cancelar</a>
+
+        </form>
+
+      </div>
     </div>
   </div>
 
