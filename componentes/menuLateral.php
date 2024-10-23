@@ -7,31 +7,31 @@
           <hr class="">
           <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-              <a href="#" class="nav-link text-white" aria-current="page">
+              <a href="./principal.php" class="nav-link text-white" aria-current="page">
                 <i class="bi bi-person"></i>
-                Usuário
+                Inicio
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-white  me-1">
+              <a href="./cidade.php" class="nav-link text-white  me-1">
                 <i class="bi bi-buildings"></i>
                 Cidade
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-white me-1">
+              <a href="./cliente.php" class="nav-link text-white me-1">
                 <i class="bi bi-people"></i>
                 Cliente
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-white me-1">
+              <a href="./funcionário.php" class="nav-link text-white me-1">
                 <i class="bi bi-person-badge"></i>
                 funcionário
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-white me-1">
+              <a href="./produtos.php" class="nav-link text-white me-1">
                 <i class="bi bi-box-seam"></i>
                 
                 Produtos

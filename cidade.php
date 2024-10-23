@@ -2,20 +2,20 @@
   include "conexao.php";
 
   // destino do formulário para inserir por padrao
-  $destino = './usuario/inserir.php';
+  $destino = './cidade/inserir.php';
 
   // se idAlt for diferente de vazio - se existir idAlt
   if(!empty($_GET['idAlt'])){
     // guarda na variavel $id o valor da pessoa clicado no lápis da tabela
     $id = $_GET['idAlt'];
-// busca o usuario do idaAlt
-   $sql = "SELECT * FROM usuario WHERE id='$id'";
+// busca o cidade do idaAlt
+   $sql = "SELECT * FROM cidade WHERE id='$id'";
   //  executa o comando
    $dados = mysqli_query($conexao,$sql);
   //  variavel com nosso dados
   $dadosAlt = mysqli_fetch_assoc($dados);
 
-  $destino = './usuario/alterar.php';
+  $destino = './cidade/alterar.php';
   }
 ?>
 <!DOCTYPE html>
@@ -47,23 +47,23 @@
       <div class="col-md-9">
         <div class="row">
           <div class="col-md card p-3">
-            <h3>Cadastro</h3>
+            <h3>Cadastro de cidades</h3>
             <form action="<?=$destino?>" method="post">
               <div class="form-group">
                   <label>ID</label>
-                  <input name="id" value="<?php echo isset($dadosAlt) ? $dadosAlt['id'] : '' ?>" type="text" class="form-control" placeholder="Seu id" readonly>
+                  <input name="id" value="<?php echo isset($dadosAlt) ? $dadosAlt['id'] : '' ?>" type="text" class="form-control" placeholder="id" readonly>
                 </div>
               <div class="form-group">
-                  <label>Nome</label>
-                  <input name="nome" value="<?php echo isset($dadosAlt) ? $dadosAlt['nome'] : '' ?>" type="text" class="form-control" placeholder="Digite seu nome." required>
+                  <label>Nome da cidade</label>
+                  <input name="nome" value="<?php echo isset($dadosAlt) ? $dadosAlt['nome'] : '' ?>" type="text" class="form-control" placeholder="Digite o nome da cidade." required>
                 </div>
               <div class="form-group">
-                <label class="painel-label-texto">CPF</label>
-                <input name="cpf" value="<?php echo isset($dadosAlt) ? $dadosAlt['cpf'] : '' ?>" type="text" class="form-control cpf" placeholder="Digite seu CPF." required>
+                <label class="painel-label-texto">CEP</label>
+                <input name="cep" value="<?php echo isset($dadosAlt) ? $dadosAlt['cep'] : '' ?>" type="text" class="form-control cep" placeholder="Digite o cep." required>
               </div>
               <div class="form-group mt-1">
-                <label>Senha</label>
-                <input name="senha" value="<?php echo isset($dadosAlt) ? $dadosAlt['senha'] : '' ?>" type="password" class="form-control" placeholder="Digite sua senha." required>
+                <label>Estado</label>
+                <input name="estado" value="<?php echo isset($dadosAlt) ? $dadosAlt['estado'] : '' ?>" type="text" class="form-control" placeholder="Digite o estado." required>
               </div>
               <button type="submit" class="btn btn-secondary mt-3">Cadastrar</button>
               <button type="reset" class="btn btn-danger mt-3">Limpar</button>
@@ -75,15 +75,16 @@
               <thead>
                 <tr>
                   <th scope="col">ID</th>
-                  <th scope="col">Nome</th>
-                  <th scope="col">CPF</th>
+                  <th scope="col">Cidade</th>
+                  <th scope="col">CEP</th>
+                  <th scope="col">Estado</th>
                   <th scope="col">Opções</th>
                 </tr>
               </thead>
               <tbody>
               <?php
                               //SQL para selecionar todos os usuários
-                              $sql = "SELECT * FROM usuario";
+                              $sql = "SELECT * FROM cidade";
                               $resultado = mysqli_query($conexao, $sql);
                               //looping onde $coluna, vai representar os dados do banco
                               //a cada linha é uma registro diferente
@@ -91,10 +92,11 @@
                               <tr>
                                 <th> <?php echo $coluna['id'] ?> </th>
                                 <td> <?php echo $coluna['nome'] ?> </td>
-                                <td> <?php echo $coluna['cpf'] ?> </td>
+                                <td> <?php echo $coluna['cep'] ?> </td>
+                                <td> <?php echo $coluna['estado'] ?> </td>
                                 <td> 
-                                  <a href="principal.php?idAlt=<?= $coluna['id'] ?>"> <i class="fa-solid fa-pen-to-square mr-3" style="color: green;"></i></a>
-                                  <a href="<?php echo './usuario/excluir.php?id='.$coluna['id'] ?>">
+                                  <a href="cidade.php?idAlt=<?= $coluna['id'] ?>"> <i class="fa-solid fa-pen-to-square mr-3" style="color: green;"></i></a>
+                                  <a href="<?php echo './cidade/excluir.php?id='.$coluna['id'] ?>">
                                     <i class="fa-solid fa-trash-can" style="color: red;"></i>
                                   </a>
                                 </td>
