@@ -12,6 +12,7 @@
     integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./recursos/particle.css">
+  <link rel="shortcut icon" href="./recursos/icon.svg" type="imagex/svg">
 </head>
 
 <body>

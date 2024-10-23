@@ -13,7 +13,7 @@
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-white me-1">
+              <a href="#" class="nav-link text-white  me-1">
                 <i class="bi bi-buildings"></i>
                 Cidade
               </a>
