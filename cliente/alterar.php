@@ -2,11 +2,17 @@
 include "../conexao.php";
 
 $id = $_REQUEST['id'];
-$cpf = $_REQUEST['cpf'];
 $nome = $_REQUEST['nome'];
-$senha = $_REQUEST['senha'];
+$cpf = $_REQUEST['cpf'];
+$celular = $_REQUEST['celular'];
+$endereco = $_REQUEST['endereco'];
+$numero = $_REQUEST['numero'];
+$bairro = $_REQUEST['bairro'];
+$email = $_REQUEST['email'];
+$cidade = $_REQUEST['bairro'];
 
-$sql = "UPDATE usuario SET nome='$nome', cpf='$cpf', senha='$senha' WHERE id='$id'";
+
+$sql = "UPDATE cliente SET nome='$nome', cpf='$cpf', celular='$celular', endereco='$endereco', numero='$numero', bairro='$bairro', email='$email', cidade='$cidade' WHERE id='$id'";
 
 $resultado = mysqli_query($conexao, $sql);
-header('Location: ../principal.php');
+header('Location: ../cliente.php');

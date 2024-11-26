@@ -2,20 +2,20 @@
   include "conexao.php";
 
   // destino do formulário para inserir por padrao
-  $destino = './usuario/inserir.php';
+  $destino = './cliente/inserir.php';
 
   // se idAlt for diferente de vazio - se existir idAlt
   if(!empty($_GET['idAlt'])){
     // guarda na variavel $id o valor da pessoa clicado no lápis da tabela
     $id = $_GET['idAlt'];
-// busca o usuario do idaAlt
-   $sql = "SELECT * FROM usuario WHERE id='$id'";
+// busca o cliente do idaAlt
+   $sql = "SELECT * FROM cliente WHERE id='$id'";
   //  executa o comando
    $dados = mysqli_query($conexao,$sql);
   //  variavel com nosso dados
   $dadosAlt = mysqli_fetch_assoc($dados);
 
-  $destino = './usuario/alterar.php';
+  $destino = './cliente/alterar.php';
   }
 ?>
 <!DOCTYPE html>
@@ -53,17 +53,57 @@
                   <label>ID</label>
                   <input name="id" value="<?php echo isset($dadosAlt) ? $dadosAlt['id'] : '' ?>" type="text" class="form-control" placeholder="Seu id" readonly>
                 </div>
+
               <div class="form-group">
                   <label>Nome</label>
                   <input name="nome" value="<?php echo isset($dadosAlt) ? $dadosAlt['nome'] : '' ?>" type="text" class="form-control" placeholder="Digite seu nome." required>
                 </div>
+
               <div class="form-group">
                 <label class="painel-label-texto">CPF</label>
                 <input name="cpf" value="<?php echo isset($dadosAlt) ? $dadosAlt['cpf'] : '' ?>" type="text" class="form-control cpf" placeholder="Digite seu CPF." required>
               </div>
+
               <div class="form-group mt-1">
-                <label>Senha</label>
-                <input name="senha" value="<?php echo isset($dadosAlt) ? $dadosAlt['senha'] : '' ?>" type="password" class="form-control" placeholder="Digite sua senha." required>
+                <label>Celular</label>
+                <input name="celular" value="<?php echo isset($dadosAlt) ? $dadosAlt['celular'] : '' ?>" type="text" class="form-control" placeholder="Digite o numero de celular." required>
+              </div>
+              
+              <div class="form-group mt-1">
+                <label>Endereço</label>
+                <input name="endereco" value="<?php echo isset($dadosAlt) ? $dadosAlt['endereco'] : '' ?>" type="text" class="form-control" placeholder="Digite seu endereço." required>
+              </div>
+
+              <div class="form-group mt-1">
+                <label>Número</label>
+                <input name="numero" value="<?php echo isset($dadosAlt) ? $dadosAlt['numero'] : '' ?>" type="text" class="form-control" placeholder="Digite o número." required>
+              </div>
+
+              <div class="form-group mt-1">
+                <label>Bairro</label>
+                <input name="bairro" value="<?php echo isset($dadosAlt) ? $dadosAlt['bairro'] : '' ?>" type="text" class="form-control" placeholder="Digite o bairro." required>
+              </div>
+
+              <div class="form-group mt-1">
+                <label>Email</label>
+                <input name="email" value="<?php echo isset($dadosAlt) ? $dadosAlt['email'] : '' ?>" type="text" class="form-control" placeholder="Digite seu email." required>
+              </div>
+
+              <div class="form-group mt-3">
+                <label>Cidade</label>
+               <select name="cidade" class="form-control" id="">
+                <option value="</php echo isset($dadosAlt)?$dadosAlt['cidade']:'' ?>">
+                  <?php
+                  // se existir dados de alt
+                $sql = 'SELECT * FROM cidade';
+                $dados = mysqli_query($conexao, $sql);
+
+                while($coluna = mysqli_fetch_assoc($dados)){
+                  echo "<option value='".$coluna['id']."'>".$coluna['nome']."</option>";
+                }
+                  ?>
+                </option>
+               </select>
               </div>
               <button type="submit" class="btn btn-secondary mt-3">Cadastrar</button>
               <button type="reset" class="btn btn-danger mt-3">Limpar</button>
@@ -83,7 +123,7 @@
               <tbody>
               <?php
                               //SQL para selecionar todos os usuários
-                              $sql = "SELECT * FROM usuario";
+                              $sql = "SELECT * FROM cliente";
                               $resultado = mysqli_query($conexao, $sql);
                               //looping onde $coluna, vai representar os dados do banco
                               //a cada linha é uma registro diferente
@@ -93,8 +133,8 @@
                                 <td> <?php echo $coluna['nome'] ?> </td>
                                 <td> <?php echo $coluna['cpf'] ?> </td>
                                 <td> 
-                                  <a href="principal.php?idAlt=<?= $coluna['id'] ?>"> <i class="fa-solid fa-pen-to-square mr-3" style="color: green;"></i></a>
-                                  <a href="<?php echo './usuario/excluir.php?id='.$coluna['id'] ?>">
+                                  <a href="cliente.php?idAlt=<?= $coluna['id'] ?>"> <i class="fa-solid fa-pen-to-square mr-3" style="color: green;"></i></a>
+                                  <a href="<?php echo './cliente/excluir.php?id='.$coluna['id'] ?>">
                                     <i class="fa-solid fa-trash-can" style="color: red;"></i>
                                   </a>
                                 </td>
