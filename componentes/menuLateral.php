@@ -25,7 +25,7 @@
               </a>
             </li>
             <li>
-              <a href="./funcionário.php" class="nav-link text-white me-1">
+              <a href="./funcionario.php" class="nav-link text-white me-1">
                 <i class="bi bi-person-badge"></i>
                 funcionário
               </a>

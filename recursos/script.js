@@ -10,8 +10,6 @@ let table = new DataTable("#tabela",{
 
 $(document).ready(function(){
   $('.cpf').mask('000.000.000-00');
-});
-
-$(document).ready(function(){
+  $('.celular').mask('(00) 00000-0000');
   $('.cep').mask('00.000-000');
 });

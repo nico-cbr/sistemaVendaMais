@@ -2,20 +2,20 @@
   include "conexao.php";
 
   // destino do formulário para inserir por padrao
-  $destino = './cliente/inserir.php';
+  $destino = './funcionario/inserir.php';
 
   // se idAlt for diferente de vazio - se existir idAlt
   if(!empty($_GET['idAlt'])){
     // guarda na variavel $id o valor da pessoa clicado no lápis da tabela
     $id = $_GET['idAlt'];
-// busca o cliente do idaAlt
-   $sql = "SELECT * FROM cliente WHERE id='$id'";
+// busca o funcionario do idaAlt
+   $sql = "SELECT * FROM funcionario WHERE id='$id'";
   //  executa o comando
    $dados = mysqli_query($conexao,$sql);
   //  variavel com nosso dados
   $dadosAlt = mysqli_fetch_assoc($dados);
 
-  $destino = './cliente/alterar.php';
+  $destino = './funcionario/alterar.php';
   }
 ?>
 <!DOCTYPE html>
@@ -89,6 +89,11 @@
                 <input name="email" value="<?php echo isset($dadosAlt) ? $dadosAlt['email'] : '' ?>" type="text" class="form-control" placeholder="Digite seu email." required>
               </div>
 
+              <div class="form-group mt-1">
+                <label>Cargo</label>
+                <input name="cargo" value="<?php echo isset($dadosAlt) ? $dadosAlt['cargo'] : '' ?>" type="text" class="form-control" placeholder="Digite o cargo." required>
+              </div>
+
               <div class="form-group mt-3">
                 <label>Cidade</label>
                <select name="cidade" class="form-control" id="">
@@ -116,14 +121,14 @@
                 <tr>
                   <th scope="col">ID</th>
                   <th scope="col">Nome</th>
-                  <th scope="col">CPF</th>
+                  <th scope="col">cargo</th>
                   <th scope="col">Opções</th>
                 </tr>
               </thead>
               <tbody>
               <?php
                               //SQL para selecionar todos os usuários
-                              $sql = "SELECT * FROM cliente";
+                              $sql = "SELECT * FROM funcionario";
                               $resultado = mysqli_query($conexao, $sql);
                               //looping onde $coluna, vai representar os dados do banco
                               //a cada linha é uma registro diferente
@@ -131,10 +136,10 @@
                               <tr>
                                 <th> <?php echo $coluna['id'] ?> </th>
                                 <td> <?php echo $coluna['nome'] ?> </td>
-                                <td> <?php echo $coluna['cpf'] ?> </td>
+                                <td> <?php echo $coluna['cargo'] ?> </td>
                                 <td> 
-                                  <a href="cliente.php?idAlt=<?= $coluna['id'] ?>"> <i class="fa-solid fa-pen-to-square mr-3" style="color: green;"></i></a>
-                                  <a href="<?php echo './cliente/excluir.php?id='.$coluna['id'] ?>">
+                                  <a href="funcionario.php?idAlt=<?= $coluna['id'] ?>"> <i class="fa-solid fa-pen-to-square mr-3" style="color: green;"></i></a>
+                                  <a href="<?php echo './funcionario/excluir.php?id='.$coluna['id'] ?>">
                                     <i class="fa-solid fa-trash-can" style="color: red;"></i>
                                   </a>
                                 </td>
