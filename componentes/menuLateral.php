@@ -38,7 +38,7 @@
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-white me-3">
+              <a href="./venda.php" class="nav-link text-white me-3">
                 <i class="bi bi-wallet2"></i>
                 Venda
               </a>
