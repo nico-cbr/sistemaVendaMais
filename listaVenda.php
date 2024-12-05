@@ -56,9 +56,22 @@
                               while($coluna = mysqli_fetch_assoc( $resultado)){  ?>
                               <tr>
                                 <th> <?php echo $coluna['id'] ?> </th>
-                                <td> <?php echo $coluna['cliente_id'] ?> </td>
-                                <td> <?php echo $coluna['funcionario_id'] ?> </td>
-                                <td> <?php echo $coluna['data_venda'] ?> </td>
+                                <td> <?php 
+                                $dados = $conexao->query("SELECT * FROM cliente WHERE id='{$coluna['cliente_id']}'");
+                                $dados = mysqli_fetch_assoc($dados);
+                                echo $dados['nome'];
+                                ?> </td>
+
+                                <td> <?php 
+                                $dados = $conexao->query("SELECT * FROM funcionario WHERE id='{$coluna['funcionario_id']}'");
+                                $dados = mysqli_fetch_assoc($dados);
+                                echo $dados['nome'];
+                                ?> </td>
+
+                                <td> <?php 
+                                $data = new DateTime($coluna['data_venda']);
+                                echo $data->format('d/m/y H:i')
+                                ?> </td>
                                 <td> <?php echo $coluna['quantidade_total'] ?> </td>
                                 <td> <?php echo $coluna['valor_total'] ?> </td>
                                 <td> <?php echo $coluna['obs'] ?> </td>

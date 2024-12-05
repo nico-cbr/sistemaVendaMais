@@ -9,25 +9,25 @@
             <li class="nav-item">
               <a href="./principal.php" class="nav-link text-white" aria-current="page">
                 <i class="bi bi-person"></i>
-                Inicio
+                Usuários
               </a>
             </li>
             <li>
               <a href="./cidade.php" class="nav-link text-white  me-1">
                 <i class="bi bi-buildings"></i>
-                Cidade
+                Cidades
               </a>
             </li>
             <li>
               <a href="./cliente.php" class="nav-link text-white me-1">
                 <i class="bi bi-people"></i>
-                Cliente
+                Clientes
               </a>
             </li>
             <li>
               <a href="./funcionario.php" class="nav-link text-white me-1">
                 <i class="bi bi-person-badge"></i>
-                funcionário
+                funcionários
               </a>
             </li>
             <li>
@@ -40,7 +40,13 @@
             <li>
               <a href="./venda.php" class="nav-link text-white me-3">
                 <i class="bi bi-wallet2"></i>
-                Venda
+                Vendas
+              </a>
+            </li>
+            <li>
+              <a href="./listaVenda.php" class="nav-link text-white me-3">
+                <i class="bi bi-wallet2"></i>
+                Lista de Vendas
               </a>
             </li>
           </ul>
