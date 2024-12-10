@@ -46,7 +46,7 @@ include './venda/atualizarTabela.php';
 
             <div class="form-group col-md-6">
               <label for="">Produto</label>
-              <select class="form-control">
+              <select class="form-control" name="produto">
                 <?Php
                   $resultado = $conexao->query("SELECT id, nome, preco, estoque from produto");
                   while($coluna = $resultado->fetch_assoc()){
@@ -80,10 +80,10 @@ include './venda/atualizarTabela.php';
                     
                     ?>
                   <tr>
-                  <td> <?php $item['nome'] ?> </td>
-                  <td> <?php $item['quantidade'] ?> </td>
-                  <td> <?php $item['valor'] ?> </td>
-                  <td>  <?php $item['quantidade'] * $item['valor']?> </td>
+                  <td> <?php echo $item['nome'] ?> </td>
+                  <td> <?php echo $item['quantidade'] ?> </td>
+                  <td> <?php echo $item['valor'] ?> </td>
+                  <td>  <?php echo $item['quantidade'] * $item['valor']?> </td>
                   <td><a href=""><i class="fa-solid fa-circle-minus" style="color: red;"></i></a></td>
                 </tr>
                 <?php } ?>

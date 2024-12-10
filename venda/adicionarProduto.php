@@ -19,5 +19,5 @@
     $conexao->query("INSERT INTO item_venda(venda_id, produto_id, quantidade, valor)
     VALUES($idVenda, $produtoID, $quantidade, $preco)");
 
-    header("Location: venda.php?idVenda=$idVenda");
+    header("Location: ./venda.php?idVenda=$idVenda");
   }
