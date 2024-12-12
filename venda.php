@@ -1,10 +1,10 @@
 <?php
   include 'conexao.php';
   include 'validacao.php';
-  
+   
 
   // caso ja exsita um id venda
-  if (!empty($_GET['idVEnda'])) {
+  if (!empty($_GET['idVenda'])) {
     $idVenda = $_GET['idVenda'];
   } else {
     // crinar nova venda
@@ -14,7 +14,6 @@
   }
 
 include './venda/adicionarProduto.php';
-include './venda/atualizarTabela.php';
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +47,7 @@ include './venda/atualizarTabela.php';
               <label for="">Produto</label>
               <select class="form-control" name="produto">
                 <?Php
-                  $resultado = $conexao->query("SELECT id, nome, preco, estoque from produto");
+                  $resultado = $conexao->query("SELECT id, nome, preco, estoque from produto WHERE estoque > 0");
                   while($coluna = $resultado->fetch_assoc()){
                     echo "<option value='{$coluna['id']}'> {$coluna['nome']} - Estoque: {$coluna['estoque']} - Valor: {$coluna['preco']} </option>";
                   }
@@ -74,19 +73,19 @@ include './venda/atualizarTabela.php';
                 <th class="col-1">Opções</th>
               <tbody>
                 <?php 
+                include './venda/atualizarTabela.php';
                   $itensVenda->data_seek(offset:0);
                   while($item = $itensVenda->fetch_assoc()){
-                    
-                    
+ 
                     ?>
                   <tr>
                   <td> <?php echo $item['nome'] ?> </td>
                   <td> <?php echo $item['quantidade'] ?> </td>
                   <td> <?php echo $item['valor'] ?> </td>
                   <td>  <?php echo $item['quantidade'] * $item['valor']?> </td>
-                  <td><a href=""><i class="fa-solid fa-circle-minus" style="color: red;"></i></a></td>
+                  <td><a href="./venda/remover_produto.php?idVenda=<?=$idVenda?>&idItem=<?=$item['id']?>&qtd=<?=$item['quantidade']?>&prod=<?=$item['produto_id']?>"><i class="fa-solid fa-circle-minus" style="color: red;"></i></a></td>
                 </tr>
-                <?php } ?>
+                <?php }?>
               </tbody>
               </thead>
             </table>
@@ -117,12 +116,12 @@ include './venda/atualizarTabela.php';
 
           <div class="form-group">
             <label>Quantidade total</label>
-            <input type="text" class="form-control" value="2" readonly>
+            <input type="text" class="form-control" value=" <?php echo $totalQuantidade ?>" readonly>
           </div>
 
           <div class="form-group">
             <label>Valor total</label>
-            <input type="text" class="form-control" value="R$40.00" readonly>
+            <input type="text" class="form-control" value="R$<?php echo $totalValor ?>" readonly>
           </div>
 
           <div class="form-group">
